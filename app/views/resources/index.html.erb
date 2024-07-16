@@ -1,0 +1,19 @@
+<%= turbo_stream_from "resources" %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <p style="color: green"><%= notice %></p>
+
+      <h1>Resources</h1>
+      <div class="my-4">
+        <%= render "form", resource: @resource %>
+      </div>
+      <div id="resources">
+        <% @resources.each do |resource| %>
+          <%= render resource %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

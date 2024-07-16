@@ -1,0 +1,31 @@
+<%= turbo_stream_from @resource %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h1><%= @resource.name %></h1>
+      <p><%= @resource.description %></p>
+      <div>
+        <h2>Comments</h2>
+        <%# form  %>
+        <%= form_with(model: [ @resource, @comment ], class: "border border-success-subtle p-4") do |form| %>
+          <div>
+            <%= form.label :content, class: "form-label" %>
+            <%= form.text_area :content, class: "form-control" %>
+          </div>
+          <div>
+            <%= form.submit "Submit", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <% @resource.comments.order(created_at: :desc).each do |comment| %>
+          <div class="card my-2">
+            <div class="card-body">
+              <p><%= comment.content %></p>
+              <p><%= time_ago_in_words comment.created_at %> ago</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= turbo_refreshes_with(method: :morph, scroll: :preserve) %>
     <title><%= content_for(:title) || "Rails Tnt" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,13 +14,18 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    
+
     <%= stylesheet_link_tag :all, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container">
+        <%= link_to "Home", root_path, class: "navbar-brand" %>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

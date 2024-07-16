@@ -1,0 +1,26 @@
+<%= form_with(model: resource, class: "border border-success-subtle p-4") do |form| %>
+
+  <div>
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_area :name, class: "form-control" %>
+  </div>
+  <div>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+    <% if resource.errors.any? %>
+      <div style="color: red">
+        <p><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</p>
+
+        <ul>
+          <% resource.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div>
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<%= turbo_stream_from resource %>
+
+<div id="<%= dom_id resource %>" class="card text-center my-2">
+  <div class="card-body">
+    <h5 class="card-title"><%= resource.name %></h5>
+    <p class="card-text"><%= resource.description %></p>
+    <p class="card-text"><%= pluralize(resource.comments_count, "comment") %></p>
+    <%= link_to "See", resource_path(resource), class: "stretched-link" %>
+  </div>
+  <div class="card-footer text-body-secondary">
+    <%= time_ago_in_words resource.created_at %> ago
+  </div>
+</div>
